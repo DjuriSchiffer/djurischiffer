@@ -1,3 +1,7 @@
+---
+const { title, subTitle, text, link, link2, image } = Astro.props.data;
+---
+
 <section class="bg-white dark:bg-gray-900 h-screen">
   <div
     class="grid max-w-screen-xl h-full px-4 py-8 mx-auto my-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12"
@@ -6,29 +10,29 @@
       <h1
         class="max-w-2xl mb-4 text-4xl font-extrabold md:text-5xl xl:text-6xl dark:text-white"
       >
-        Djuri Schiffer
+        {title}
       </h1>
       <p
         class="max-w-2xl mb-6 font-light text-gray-600 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-300"
       >
-        Front-end developer
+        {subTitle}
       </p>
       <a
-        href="#component-portfolio"
+        href={link?.url}
         class="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-300 dark:focus:ring-gray-900"
       >
-        My Portfolio
+        {link?.title}
       </a>
       <a
-        href="https://www.linkedin.com/in/djuri-schiffer-a063604a/"
-        target="_blank"
+        href={link2?.url}
+        target={link2?.target ?? '_blank'}
         class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
       >
-        My LinkedIn
+        {link2?.title}
       </a>
     </div>
     <div class="hidden place-self-center lg:mt-0 lg:col-span-5 lg:flex">
-      <img src="/me.jpg" alt="Djuri Schiffer's Photograph" />
+      <img src={image?.sourceUrl} alt={image?.altText} />
     </div>
   </div>
 </section>
