@@ -3,13 +3,13 @@ import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import Hero from "../components/Hero.astro";
 import HighligthedPortfolio from "../components/HighligthedPortfolio.astro";
-import { homePageData } from "../lib/api";
-const data = await homePageData();
+import { getPageDataByUri } from "../lib/api";
+const data = await getPageDataByUri('/');
 
 ---
 
 <Layout title="Djuri Schiffer">
   <Navbar />
-  <Hero data={data.nodeByUri.homeData.homeBanner} />
+  <Hero data={data.homeBanner} />
   <HighligthedPortfolio id="component-portfolio" />
 </Layout>
