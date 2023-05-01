@@ -2,9 +2,9 @@
 const { data } = Astro.props;
 const title = data?.title || '';
 const text = data?.text || '';
-const link = data?.link 
-const image = data?.image || '';
-
+const link = data?.link;
+const githubUrl = data?.githubUrl || '';
+const image = data?.image?.sourceUrl || '';
 
 ---
 
@@ -12,7 +12,6 @@ const image = data?.image || '';
     <div
       class="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6"
     >
-    
       <img
         class="w-full hidden dark:block"
         src={image}
@@ -34,8 +33,8 @@ const image = data?.image || '';
       >
       {link?.title}
       </a>
-      {link?.github && <a
-        href={ link.github }
+      {githubUrl && <a
+        href={ githubUrl }
         target="_blank"
         class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
       >

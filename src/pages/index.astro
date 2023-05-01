@@ -2,14 +2,31 @@
 import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
 import Hero from "../components/Hero.astro";
-import HighligthedPortfolio from "../components/HighligthedPortfolio.astro";
-import { getPageDataByUri } from "../lib/api";
-const data = await getPageDataByUri('/');
+import PageComponents from "../components/PageComponents.astro";
+import { fetchData } from "../lib/api";
+import { homeData } from "../lib/queries";
 
+async function getPageDataByUri() {
+  const data = await fetchData(
+    `
+    query GetNodeByUri($uri: String!) {
+        nodeByUri(uri: $uri) {
+            __typename
+            ${homeData}
+        }
+    }
+  `,
+    { uri: '/'}
+  );
+  return data.nodeByUri.homeData;
+}
+
+
+const data = await getPageDataByUri();
 ---
 
 <Layout title="Djuri Schiffer">
   <Navbar />
   <Hero data={data.homeBanner} />
-  <HighligthedPortfolio id="component-portfolio" />
+  <PageComponents components={data.pageComponents} />
 </Layout>

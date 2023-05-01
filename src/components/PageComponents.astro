@@ -1,0 +1,15 @@
+---
+const { components } = Astro.props;
+import HighligthedPortfolio from "./HighligthedPortfolio.astro";
+---
+<>
+    {components.map((component: { __typename: any; }) => {
+        switch(component.__typename){
+            case 'Page_Homedata_PageComponents_ComponentHighlightedProjects':
+                return (<HighligthedPortfolio data={component} />);
+            break;
+            default:
+            return (<div></div>);
+        }
+    })}
+</>

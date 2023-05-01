@@ -1,36 +1,21 @@
 ---
 import PortfolioItem from "./PortfolioItem.astro";
 
-const { id } = Astro.props;
-
-
-const portfolioItems = [
-    {
-        'title' : 'Got Crypto',
-        'text' : 'A small and easy to use portfolio where your crypto assets are easily managed and monitored. All data is stored in your browser for enchanded privacy.',
-        'link' : {
-            'url' : 'https://gotcrypto.djurischiffer.nl/',
-            'title' : 'Visit site',
-            'github' : 'https://github.com/DjuriSchiffer/finance-portfolio'
-        },
-        'image' : 'https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup.svg'
-    }
-]
-
+const { data } = Astro.props;
 ---
 
-<section {id} class="bg-white dark:bg-gray-900">
+<section class="bg-white dark:bg-gray-900">
   <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
     <div class="mx-auto max-w-screen-sm text-center">
       <h2
         class="mb-4 text-4xl tracking-tight font-extrabold leading-tight text-gray-900 dark:text-white"
       >
-        Portfolio
+        {data.title}
       </h2>
       <p class="mb-6 font-light text-gray-500 dark:text-gray-400 md:text-lg">
-        A small selection of my work
+        {data.subtitle}
       </p>
     </div>
   </div>
 </section>
-{portfolioItems.map((data) => <PortfolioItem data={data} />)}
+{data.projects.map((project: any) => <PortfolioItem data={project} />)}
