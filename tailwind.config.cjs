@@ -19,7 +19,7 @@ module.exports = {
     },
     extend: {
       colors: {
-        blue: {
+        green: {
           // primary
           50: "#ecfdf5",
           100: "#d1fae5",
@@ -37,6 +37,11 @@ module.exports = {
             DEFAULT: "#34d399", //400
             on: "#ecfdf5", //800
           },
+        },
+      },
+      extend: {
+        fontSize: {
+          "8xl": "6rem",
         },
       },
     },

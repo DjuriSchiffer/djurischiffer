@@ -39,7 +39,7 @@ export const homeData = `
         homeBanner {
             title
             subTitle
-            text
+            payoff
             ${linkFragment}
             link2 {
                 target
