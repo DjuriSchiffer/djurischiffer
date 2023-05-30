@@ -37,7 +37,7 @@ const { title, subTitle, payoff, link, link2, image } = Astro.props.data;
       </a>
     </div>
     <div class="hidden place-self-center lg:mt-0 lg:col-span-5 lg:flex">
-      <img src={image?.sourceUrl} alt={image?.altText} />
+      <img class="rounded" src={image?.sourceUrl} alt={image?.altText} />
     </div>
   </div>
 </section>
